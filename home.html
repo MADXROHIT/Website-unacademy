@@ -3,67 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Select Batches</title>
+<title>MADXROHIT – Free For All</title>
+
 <style>
 body{
-  margin:0;height:100vh;
+  margin:0;
+  min-height:100vh;
   background:#020617;
-  display:flex;align-items:center;justify-content:center;
-  font-family:Segoe UI;color:#fff;
+  font-family:Segoe UI, sans-serif;
+  color:#fff;
+  display:flex;
+  justify-content:center;
 }
-.wrap{
-  width:340px;
-  display:grid;
-  gap:20px;
+.container{
+  width:360px;
+  padding:15px;
 }
+.header{
+  text-align:center;
+  padding:15px 10px;
+  border:1px solid #1e293b;
+  border-radius:14px;
+  margin-bottom:18px;
+}
+.header h2{
+  margin:0;
+  color:#22c55e;
+}
+.header p{
+  margin:6px 0 0;
+  font-size:13px;
+  color:#94a3b8;
+}
+
 .card{
   background:#020617;
   border:1px solid #1e293b;
   border-radius:16px;
-  padding:25px;
+  padding:22px;
+  margin-bottom:18px;
   text-align:center;
 }
-.card h3{margin-bottom:6px}
-.card p{font-size:13px;color:#94a3b8}
-button{
-  margin-top:15px;
+.card h3{
+  margin:0 0 6px;
+}
+.card p{
+  font-size:13px;
+  color:#94a3b8;
+}
+.card button{
+  margin-top:14px;
   width:100%;
   padding:12px;
-  border:none;border-radius:10px;
+  border:none;
+  border-radius:10px;
   font-weight:600;
   cursor:pointer;
 }
 .off{background:#22c55e;color:#022c22}
-.on{background:#2563eb;color:white}
+.on{background:#2563eb;color:#fff}
+
+.download{
+  background:linear-gradient(135deg,#f59e0b,#f97316);
+  color:#1f1300;
+  font-weight:700;
+  border:none;
+  border-radius:14px;
+  padding:14px;
+  width:100%;
+  cursor:pointer;
+}
+
+/* Floating buttons */
+.float{
+  position:fixed;
+  right:15px;
+  z-index:999;
+}
+.telegram{bottom:90px;}
+.whatsapp{bottom:20px;}
+
+.float a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:30px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+}
+.telegram a{background:#229ED9;}
+.whatsapp a{background:#25D366;}
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<div class="card">
-<h3>📂 Offline Batches</h3>
-<p>Recorded content (preview)</p>
-<button class="off" onclick="openBatch('https://studyuk.site/offline')">
-OPEN OFFLINE
-</button>
+<div class="header">
+  <h2>MADXROHIT – Free For All</h2>
+  <p>किसी को पैसा ना दे</p>
 </div>
 
 <div class="card">
-<h3>🎯 Online Batches</h3>
-<p>Live / goal based (preview)</p>
-<button class="on" onclick="openBatch('https://studyuk.site/goal')">
-OPEN ONLINE
-</button>
+  <h3>📂 Offline Batches</h3>
+  <p>Preview available for 1 minute</p>
+  <button class="off"
+    onclick="openPreview('https://studyuk.site/offline')">
+    OPEN OFFLINE
+  </button>
 </div>
 
+<div class="card">
+  <h3>🎯 Online Batches</h3>
+  <p>Direct open (no preview)</p>
+  <button class="on"
+    onclick="openGoal()">
+    OPEN ONLINE
+  </button>
+</div>
+
+<button class="download"
+ onclick="window.open('https://madxrohit.netlify.app/','_blank')">
+ ⬇ Download Our All PREMIUM Mod Apps Free
+</button>
+
+</div>
+
+<!-- Floating Telegram -->
+<div class="float telegram">
+  <a href="https://t.me/+DVRwarcX1bk0NGNl" target="_blank">
+    📢 Join Telegram
+  </a>
+</div>
+
+<!-- Floating WhatsApp -->
+<div class="float whatsapp">
+  <a href="https://whatsapp.com/channel/0029VakDgLmBA1f6TRykhY0E"
+     target="_blank">
+    💬 Join WhatsApp
+  </a>
 </div>
 
 <script>
-function openBatch(url){
+function openPreview(url){
   sessionStorage.setItem("preview_url",url);
   sessionStorage.setItem("preview_until",Date.now()+60000);
   location.href="preview.html";
+}
+
+function openGoal(){
+  window.open("https://studyuk.site/goal/","_blank");
 }
 </script>
 
