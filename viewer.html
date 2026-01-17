@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premium Content</title>
+<style>
+html,body{
+  margin:0;height:100%;
+  background:black;
+}
+iframe{
+  width:100%;height:100%;
+  border:none;
+}
+</style>
+</head>
+<body>
+
+<iframe id="frame"></iframe>
+
+<script>
+const url = sessionStorage.getItem("target_url");
+if(!url){ location.replace("select.html"); }
+document.getElementById("frame").src = url;
+</script>
+
+</body>
+</html>
