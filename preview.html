@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+const until = sessionStorage.getItem("preview_until");
+if(!until || Date.now()>until){
+  location.replace("verify.html");
+}
+setTimeout(()=>{
+  location.replace("verify.html");
+},60000);
+</script>
+<style>
+html,body{margin:0;height:100%}
+iframe{width:100%;height:100%;border:none}
+</style>
+</head>
+<body>
+
+<iframe id="f"></iframe>
+
+<script>
+document.getElementById("f").src =
+  sessionStorage.getItem("preview_url");
+</script>
+
+</body>
+</html>
