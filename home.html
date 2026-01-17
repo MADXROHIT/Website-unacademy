@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Select Batch</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Select Batches</title>
 <style>
 body{
   margin:0;height:100vh;
@@ -12,7 +12,9 @@ body{
   font-family:Segoe UI;color:#fff;
 }
 .wrap{
-  display:grid;gap:20px;width:340px;
+  width:340px;
+  display:grid;
+  gap:20px;
 }
 .card{
   background:#020617;
@@ -20,19 +22,19 @@ body{
   border-radius:16px;
   padding:25px;
   text-align:center;
-  box-shadow:0 0 30px rgba(59,130,246,.15);
 }
-.card h3{margin-bottom:8px}
+.card h3{margin-bottom:6px}
 .card p{font-size:13px;color:#94a3b8}
 button{
   margin-top:15px;
-  padding:12px;width:100%;
+  width:100%;
+  padding:12px;
   border:none;border-radius:10px;
-  background:#2563eb;
-  color:white;font-size:15px;
-  font-weight:600;cursor:pointer;
+  font-weight:600;
+  cursor:pointer;
 }
-.green{background:#22c55e;color:#022c22}
+.off{background:#22c55e;color:#022c22}
+.on{background:#2563eb;color:white}
 </style>
 </head>
 <body>
@@ -41,18 +43,16 @@ button{
 
 <div class="card">
 <h3>📂 Offline Batches</h3>
-<p>Recorded & downloadable content</p>
-<button class="green"
- onclick="openBatch('https://studyuk.site/offline')">
+<p>Recorded content (preview)</p>
+<button class="off" onclick="openBatch('https://studyuk.site/offline')">
 OPEN OFFLINE
 </button>
 </div>
 
 <div class="card">
 <h3>🎯 Online Batches</h3>
-<p>Live + goal based batches</p>
-<button
- onclick="openBatch('https://studyuk.site/goal')">
+<p>Live / goal based (preview)</p>
+<button class="on" onclick="openBatch('https://studyuk.site/goal')">
 OPEN ONLINE
 </button>
 </div>
@@ -61,8 +61,9 @@ OPEN ONLINE
 
 <script>
 function openBatch(url){
-  sessionStorage.setItem("target_url",url);
-  location.href="viewer.html";
+  sessionStorage.setItem("preview_url",url);
+  sessionStorage.setItem("preview_until",Date.now()+60000);
+  location.href="preview.html";
 }
 </script>
 
