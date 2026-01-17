@@ -1,81 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Premium Verification</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 body{
-    margin:0;
-    height:100vh;
-    background:radial-gradient(circle at top,#0f172a,#020617);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:Segoe UI, sans-serif;
-    color:#fff;
+  margin:0;height:100vh;
+  background:radial-gradient(circle,#0f172a,#020617);
+  display:flex;align-items:center;justify-content:center;
+  font-family:Segoe UI;color:#fff;
 }
 .card{
-    background:rgba(2,6,23,0.9);
-    border:1px solid #1e293b;
-    width:330px;
-    padding:35px;
-    border-radius:16px;
-    text-align:center;
-    box-shadow:0 0 50px rgba(34,197,94,0.15);
+  background:#020617;
+  border:1px solid #1e293b;
+  width:330px;padding:35px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 0 60px rgba(34,197,94,.15);
 }
-.title{
-    font-size:22px;
-    font-weight:700;
-    color:#22c55e;
-}
-.sub{
-    font-size:14px;
-    color:#94a3b8;
-    margin:15px 0 30px;
-}
-.btn{
-    width:100%;
-    padding:14px;
-    font-size:16px;
-    font-weight:600;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    background:linear-gradient(135deg,#22c55e,#16a34a);
-    color:#022c22;
-    transition:.3s;
-}
-.btn:hover{transform:scale(1.04)}
-.note{
-    font-size:12px;
-    color:#64748b;
-    margin-top:15px;
+h2{color:#22c55e;margin-bottom:10px}
+p{color:#94a3b8;font-size:14px}
+button{
+  width:100%;margin-top:25px;
+  padding:14px;font-size:16px;
+  border:none;border-radius:10px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  font-weight:600;cursor:pointer;
 }
 </style>
 </head>
 <body>
 
 <div class="card">
-    <div class="title">🔒 Premium Access</div>
-    <div class="sub">
-        Verify once to unlock content<br>
-        Access valid for <b>24 hours</b>
-    </div>
-
-    <button class="btn" onclick="verifyNow()">VERIFY & CONTINUE</button>
-
-    <div class="note">
-        After 24 hours, verification will be required again
-    </div>
+<h2>🔒 Premium Access</h2>
+<p>Verify once<br>Access valid for <b>24 hours</b></p>
+<button onclick="go()">VERIFY & CONTINUE</button>
 </div>
 
 <script>
-function verifyNow(){
-    const expiry = Date.now() + (24 * 60 * 60 * 1000);
-    localStorage.setItem("premium_access_until", expiry);
-    window.location.replace("https://studyuk.site/offline/");
+function go(){
+  localStorage.setItem(
+    "premium_access_until",
+    Date.now() + 86400000
+  );
+  location.replace("select.html");
 }
 </script>
 
