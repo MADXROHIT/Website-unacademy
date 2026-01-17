@@ -2,21 +2,80 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html,body{
+  margin:0;
+  height:100%;
+  background:#000;
+  font-family:Segoe UI, sans-serif;
+}
+
+/* ===== COUNTDOWN BADGE ===== */
+#countdownBox{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:rgba(2,6,23,.85);
+  border:1px solid #1e293b;
+  border-radius:12px;
+  padding:10px 14px;
+  color:#22c55e;
+  font-weight:700;
+  font-size:14px;
+  z-index:9999;
+  box-shadow:0 0 20px rgba(34,197,94,.3);
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+</style>
+
 <script>
 const until = sessionStorage.getItem("preview_until");
-if(!until || Date.now()>until){
+
+if(!until || Date.now() > until){
   location.replace("verify.html");
 }
+
+/* AUTO REDIRECT AFTER 1 MIN */
 setTimeout(()=>{
   location.replace("verify.html");
-},60000);
+}, until - Date.now());
+
+/* COUNTDOWN LOGIC */
+function startCountdown(){
+  const box = document.getElementById("countdownBox");
+
+  const timer = setInterval(()=>{
+    const left = until - Date.now();
+
+    if(left <= 0){
+      clearInterval(timer);
+      box.innerText = "00:00";
+      return;
+    }
+
+    const sec = Math.floor(left / 1000);
+    const m = String(Math.floor(sec / 60)).padStart(2,"0");
+    const s = String(sec % 60).padStart(2,"0");
+
+    box.innerText = `Preview ${m}:${s}`;
+  }, 1000);
+}
+
+window.onload = startCountdown;
 </script>
-<style>
-html,body{margin:0;height:100%}
-iframe{width:100%;height:100%;border:none}
-</style>
 </head>
+
 <body>
+
+<div id="countdownBox">Preview 01:00</div>
 
 <iframe id="f"></iframe>
 
