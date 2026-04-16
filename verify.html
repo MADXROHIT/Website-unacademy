@@ -6,7 +6,6 @@
 <title>Verification</title>
 
 <style>
-/* ===== BACKGROUND OVERLAY ===== */
 body{
   margin:0;
   height:100vh;
@@ -19,7 +18,6 @@ body{
   color:#fff;
 }
 
-/* ===== DIALOG BOX ===== */
 .dialog{
   width:320px;
   background:#020617;
@@ -30,13 +28,11 @@ body{
   box-shadow:0 0 70px rgba(34,197,94,.25);
   animation:pop .35s ease;
 }
-
 @keyframes pop{
   from{transform:scale(.9);opacity:0}
   to{transform:scale(1);opacity:1}
 }
 
-/* ===== LOADER ===== */
 .loader{
   width:42px;
   height:42px;
@@ -58,7 +54,6 @@ p{
   color:#94a3b8;
 }
 
-/* ===== BUTTONS ===== */
 button{
   width:100%;
   padding:13px;
@@ -80,7 +75,6 @@ button{
   cursor:not-allowed;
 }
 
-/* ===== HELP BUTTON ===== */
 .help-btn{
   margin-top:10px;
   background:#1e293b;
@@ -120,7 +114,7 @@ function verifyNow(){
   btn.disabled = true;
   btn.innerText = "Verifying...";
 
-  /* 🔗 AROLINK BACKGROUND OPEN */
+  /* 🔗 AROLINK OPEN */
   window.open(
     "https://arolinks.com/B6jr8",
     "_blank"
@@ -128,9 +122,18 @@ function verifyNow(){
 
   /* ✅ VERIFY COMPLETE */
   setTimeout(()=>{
-    sessionStorage.clear();
-    location.replace("home.html");
-  }, 2500);
+
+    let encoded = sessionStorage.getItem("target");
+
+    if(encoded){
+      let url = atob(encoded);
+      window.location.href = url;
+    } else {
+      // fallback
+      window.location.href = "index.html";
+    }
+
+  },2500);
 }
 </script>
 
